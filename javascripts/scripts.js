@@ -41,10 +41,24 @@ FeedKittenGame.prototype.generateBoard = function generateBoard(width, height){
 
 FeedKittenGame.prototype.bindClickKitten = function bindClickKitten(){
   $('#kitten-playground').on('click', '.kitten-box', function(){
-    $(this).fadeOut();
+    $(this).find('.kitten').fadeOut();
   });
 };
 // TEST: **** When I click on a kitten... it fades out
+
+
+
+
+
+FeedKittenGame.prototype.kittenSeekTreat = function kittenSeekTreat(){
+  var kittens = this.board.find('.kitten');
+  var randIndex = Math.floor(Math.random()*kittens.length);
+  var kittenWhoWillRise = kittens.eq(randIndex);
+  kittenWhoWillRise.fadeIn();
+};
+// TEST: Random Kitten Shows up...
+
+
 
 
 // --------------------------
@@ -54,9 +68,11 @@ function FeedKittenGame(options){
   this.height = options.height;
 }
 
-FeedKittenGame.prototype.init = function init(){
+FeedKittenGame.prototype.init = function init(domNode){
   this.board = this.generateBoard(this.width, this.height);
+  domNode.append(this.board);
   this.bindClickKitten();
+  $('.kitten').hide();
 };
 
 
@@ -71,9 +87,8 @@ $(document).ready(function(){
     height: 2
   });
 
-  game.init();
+  game.init( $('#kitten-playground') );
 
-  $('#kitten-playground').append( game.board );
 
 });
 
