@@ -1,3 +1,20 @@
 body{
   background-color: lightblue;
 }
+
+#kitten-playground{
+  background-color: pink;
+  display: inline-block;
+}
+
+.kitten-box{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.kitten{
+  max-width: 100px;
+}
