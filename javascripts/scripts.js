@@ -48,6 +48,13 @@ FeedKittenGame.prototype.bindClickKitten = function bindClickKitten(){
 
 
 
+FeedKittenGame.prototype.kittensRise = function kittensRise(){
+  var scope = this;  // context, that... anything
+  setInterval(function(){
+    scope.kittenSeekTreat();
+  }, 1000);
+};
+// TEST: random kittens rise... at interval
 
 
 FeedKittenGame.prototype.kittenSeekTreat = function kittenSeekTreat(){
@@ -75,6 +82,10 @@ FeedKittenGame.prototype.init = function init(domNode){
   $('.kitten').hide();
 };
 
+FeedKittenGame.prototype.start = function start(){
+  this.kittensRise();
+};
+
 
 // -------------------------------------
 
@@ -88,7 +99,7 @@ $(document).ready(function(){
   });
 
   game.init( $('#kitten-playground') );
-
+  game.start();
 
 });
 
