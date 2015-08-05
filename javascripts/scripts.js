@@ -39,6 +39,15 @@ FeedKittenGame.prototype.generateBoard = function generateBoard(width, height){
 
 
 
+FeedKittenGame.prototype.bindClickKitten = function bindClickKitten(){
+  $('#kitten-playground').on('click', '.kitten-box', function(){
+    $(this).fadeOut();
+  });
+};
+// TEST: **** When I click on a kitten... it fades out
+
+
+// --------------------------
 // FeedKittenGame    public interface....
 function FeedKittenGame(options){
   this.width = options.width;
@@ -47,8 +56,9 @@ function FeedKittenGame(options){
 
 FeedKittenGame.prototype.init = function init(){
   this.board = this.generateBoard(this.width, this.height);
-  // bind events
+  this.bindClickKitten();
 };
+
 
 // -------------------------------------
 
